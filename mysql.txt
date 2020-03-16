@@ -1,0 +1,44 @@
+新建mysql表的基本格式：
+--所有东西放在括号里面
+CREATE TABLE Student(
+--设置自增，不为空
+ID INT(10) AUTO_INCREMENT NOT NULL,
+Student_NAME VARCHAR(20) not null,
+sex  VARCHAR(4),
+birth  YEAR,
+departemt  VARCHAR(40)  NOT NULL,
+Address  VARCHAR(50),
+--设置主键
+primary key (id)
+);
+修改表的编码
+--alter table关键字+表名 +想要实现的语句
+alter table Student convert to character set utf8;
+新增表数据
+--单个插入
+--INSERT INTO关键字+表名+（所要插入的列头名称）
+--values关键字+（所要插入的列头名称）
+INSERT INTO student ( id,student_name,sex,birth,departemt,address )
+VALUES (910,'张大', '男',1995,'计算机系', '北京市海淀区')
+--多个插入
+INSERT INTO score(stu_id,c_name,grade)
+ VALUES (901,'计算机',98),(901,'英语', 80)；
+修改表数据：
+--update关键字+表名
+--set关键字+需要修改的列名
+--配合where +条件
+UPDATE score 
+set grade=68
+WHERE stu_id=906 and c_name='英语'
+查询数据表
+--select关键字
+--from+表名
+--配合where +条件
+select *
+FROM student
+WHERE departemt='计算机系'or departemt='英语系' 
+--like关键字的用法:% _ 必须在后面加'1%'
+--
+--模糊查询所使用的格式比如查询姓王的人 王%，
+--查询有三的名的人 %三 ----> %是不看字符数的
+--如果需要看字符数得使用_这个来进行查询，比如我想查姓王，名只有一个字的人王_
